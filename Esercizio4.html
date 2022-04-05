@@ -1,0 +1,51 @@
+<!--Inserisci in una pagina web le immagini di 6 prodotti di largo consumo.
+Quando l'utente passa con il mouse sopra un'immagine, vengono mostrati il nome ed il prezzo del prodott
+Effettuare il controllo input.-->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Esercizio4</title>
+</head>
+<script>
+    function viewNome(num_Foto){
+        var idImmagine = "img" + num_Foto;
+        switch(num_Foto){
+            case 1:
+                document.getElementById(idImmagine).title = "Ciliegie;€ 15";
+            break;
+
+            case 2:
+                document.getElementById(idImmagine).title = "fragole; € 25";
+            break;
+
+            case 3:
+                document.getElementById(idImmagine).title = "limoni; € 20";
+            break;
+
+            case 4:
+                document.getElementById(idImmagine).title = "Mele; € 18";
+            break;
+
+            case 5:
+                document.getElementById(idImmagine).title = "Pesca; € 5";
+            break;
+           case 6:
+                document.getElementById(idImmagine).title = "Pera; € 22";
+            break;
+        }
+        
+    }
+</script>
+<body>
+    <h1>Esercizio4</h1>
+    <p id="out"></p>
+    <img src="ciliegie.jpeg" height="100px" widht="100px" onmouseover="viewNome(1)" id="img1">
+    <img src="fragola.jpg" height="100px" widht="100px" onmouseover="viewNome(2)" id="img2">
+    <img src="limone.jpg" height="100px" widht="100px" onmouseover="viewNome(3)" id="img3">
+    <img src="mele.jpg" height="100px" widht="100px" onmouseover="viewNome(4)" id="img4">
+    <img src="pesca.jpg" height="100px" widht="100px" onmouseover="viewNome(5)" id="img5">
+    <img src="pera.jpg" height="100px" widht="100px" onmouseover="viewNome(6)" id="img6">
+
+</body>
+</html>

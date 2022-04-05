@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Esercozio1</title>
+
+        <script>
+            var num_partecipanti;
+            
+            var flag=false;
+
+            function Caselle(){
+                num_partecipanti=document.getElementById("input_num_partecipanti").value;
+
+               
+                if(isNaN(num_partecipanti) || num_partecipanti<1){
+                    alert(" Valore inserito non Valido");
+                }
+                else{
+                    
+                    var bloccoInput = document.getElementById("campoInput");
+                    var label_avviso = document.createElement("label");
+                    label_avviso.innerHTML = "Inserisci l'Età dei Partecipanti\n";
+                    bloccoInput.appendChild(label_avviso);
+
+                    for(var i=0; i<num_partecipanti; i++){
+                        var casellaInput = document.createElement("input");
+                        casellaInput.setAttribute("id", i);
+                        casellaInput.setAttribute("type", "text");
+
+                        bloccoInput.appendChild(casellaInput);
+                    }
+                    flag=true;
+                }
+            }
+
+            function calcola(){
+                var partecipante_Max=eval(document.getElementById(0).value);
+                var num_Maggiorenni=0;
+                var num_Minorenni=0;
+                var num_UltraSessantacinquenni=0;
+
+                //Controllo partecipanti
+                if(flag){
+                    for(var i=0; i<num_partecipanti; i++){
+                        var eta_partecipante = eval(document.getElementById(i).value);
+                        //Contare il numero dei partecipanti: maggiorenni, minorenni e ultrassessantenni
+
+                        if(eta_partecipante>=18){
+                            num_Maggiorenni++;
+                            if(eta_partecipante>65){
+                                num_UltraSessantacinquenni++;
+                            }
+                        }
+                        else{
+                            num_Minorenni++;
+                        }
+
+                        
+                        if(partecipante_Max<eta_Partecipante){
+                            partecipante_Max=eta_partecipante;
+                        }
+                    }
+
+                    //Creazione della Label
+                    var label = document.createElement("label");
+                    label.innerHTML = "Numero dei Partecipanti: " + num_Partecipanti + 
+                                         "\nPartecipante con più anni: " + partecipante_Max + 
+                                         "\nNumero  Maggiorenni: " + num_Maggiorenni +
+                                         "\nNumero Minorenni: " + num_Minorenni +
+                                         "\nNumero Ultrasessantacinquenni: " + num_UltraSessantacinquenni;
+                    var bloccoOut=document.getElementById("campoOut");
+                    bloccoOut.appendChild(label);
+                }
+                else{
+                    alert("Nessun inserimento del Numero dei Partecipanti");
+                }
+                
+            }
+        </script>
+
+    </head>
+    <body>
+        <h1>Età dei partecipanti</h1>
+        <input type="text" id="input_num_partecipanti">
+        <button type="button" onclick="Caselle()">Inserisci</button>
+        <button type="button" onclick="calcola()">Calcola</button>
+        <div id="campoInput"></div>
+        <div id="campoOut"></div>
+    </body>
+</html>
