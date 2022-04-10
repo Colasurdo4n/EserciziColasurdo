@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+        var num_inseriti=0;
+        var num_alunni=0;
+        
+        var label = document.createElement("label");
+        var input = document.createElement("input");
+        var button = document.createElement("button");
+        var campo_out = document.createElement("p");
+
+        label.innerHTML="Inserisci il nome dell'alunno";
+        button.innerHTML="Inserisci";
+        button.setAttribute("onclick", "calcola()");
+        campo_out.setAttribute("id", "campo_out");
+        campo_out.innerHTML="Numero degli alunni inseriti:0";
+
+        function inserisci(){
+            num_alunni=eval(document.getElementById("input_num_alunni").value);
+            document.body.innerHTML="";
+            document.body.appendChild(label);
+            document.body.appendChild(input);
+            document.body.appendChild(button);
+            document.body.appendChild(campo_out);
+        }
+
+        function calcola(){
+            if(num_inseriti>=num_alunni){
+                alert("Alunni inseriti");
+            }
+            else{
+                num_inseriti++;
+                alert("Alunno inserito");
+                document.getElementById("campo_out").innerHTML = "Numero Alunni Inseriti: " + num_inseriti;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>Inserisci numero alunni</h3>
+
+    <input id="input_num_alunni">
+    <button onclick="inserisci()">Inserisci</button>
+</body>
+</html>
