@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Esercizio 1 non parametrizzato</title>
+    <script>
+        var num_Partecipanti;
+        
+        var flag=false;
+
+        function Caselle(){
+                //Creazione  blocco  input
+                var blocco_Input = document.getElementById("campoInput");
+                var label_avviso = document.createElement("label");
+                label_avviso.innerHTML = "Inserisci l'Età dei Partecipanti\n";
+                blocco_Input.appendChild(label_avviso);
+
+                for(var i=0; i<8; i++){
+                    var paragrafo = document.createElement("p");
+                    var casella_nome = document.createElement("input");
+                    var casella_eta = document.createElement("input");
+                    var label_nome = document.createElement("label");
+                    var label_eta = document.createElement("label");
+
+                    label_nome.innerHTML = "Inserisci Nome";
+                    label_eta.innerHTML = "Inserisci Età";
+
+                    casella_eta.setAttribute("id", i);
+                    casella_eta.setAttribute("type", "text");
+
+                    paragrafo.appendChild(label_nome);
+                    paragrafo.appendChild(casella_nome);
+                    paragrafo.appendChild(label_eta);
+                    paragrafo.appendChild(casella_eta);
+
+                    blocco_Input.appendChild(paragrafo);
+                }
+                flag=true;
+            }
+
+        function calcola(){
+            var num_Maggiorenni=0;
+            var num_Minorenni=0;
+            var num_UltraSessantacinquenni=0;
+            var somma=0;
+            var media=0;
+
+            //Controllo numero dei partecipanti
+            if(flag){
+                for(var i=0; i<10; i++){
+                    var eta_Partecipante = eval(document.getElementById(i).value);
+                    
+                    if(eta_Partecipante>=18){
+                        num_Maggiorenni++;
+                        if(eta_Partecipante>65){
+                            num_UltraSessantacinquenni++;
+                        }
+                    }
+                    else{
+                        num_Minorenni++;
+                    }
+                    somma=somma+eta_Partecipante;
+                }
+                media=somma/10;
+                //Creazione  label dati di outputs
+                var label_out = document.createElement("label");
+                label_out.innerHTML = "Numero Maggiorenni: " + num_Maggiorenni +
+                                     "\nNumero Minorenni: " + num_Minorenni +
+                                     "\nNumero Ultrasessantacinquenni: " + num_UltraSessantacinquenni + 
+                                     "\nEtà Media: " + media;
+                var blocco_Out=document.getElementById("campoOut");
+                blocco_Out.appendChild(label_out);
+            }
+            else{
+                alert("Non hai inserito il numero partecipanti");
+            }
+            
+        }
+    </script>
+</head>
+<body onload="Caselle()">
+    <h1>esercizio1</h1>
+    <button type="button" onclick="calcola()">Calcola</button>
+    <div id="campoInput"></div>
+    <div id="campoOut"></div>
+</body>
+</html>
